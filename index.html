@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+    <head>
+        <title>NATO Encoder</title>
+        <meta charset="utf-8">
+        <meta name='author' content='The Hacker'>
+        <meta name='description' content='Encode your text using this NATO translator.'>
+        
+        <style>
+            :root {
+                font-family: monospace;
+                font-size: 100%;
+            }
+            html, body {
+                height: 100%;
+            }
+            div {
+                margin-top: 50px;
+            }
+            #container {
+                margin: 0 auto;
+                max-width: 640px;
+                height: 100%;
+            }
+            #header {
+                margin-top: 20px !important;
+                font-size: 3rem;
+                font-weight: bold;
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+            }
+            #header>#version {
+                font-size: 1.5rem;
+                color: gray;
+            }
+            #main {
+                margin-top: 30px;
+            }
+            label {
+                display:block;
+                margin-bottom: 0.2rem;
+                font-weight: bold;
+                font-size: 1.5rem;
+            }
+            textarea {
+                width: 100%;
+                box-sizing: border-box;
+                border: 0.1rem solid black;
+                font-size: 1.5rem;
+            }
+            .input__button {
+                position: relative;
+                font-size: 1.5rem;
+                font-weight: bold;
+                width: 100%;
+                background-color: white;
+                border: 0.5rem solid red;
+                margin-top: 0.5rem;
+            }
+            .input__button:hover {
+                animation: wow 1s;
+            }
+            #footer {
+                display: flex;
+                justify-content: space-between;
+                color: gray;
+            }
+            #footer>span>a {
+                color: rgb(92, 92, 92);
+            }
+            #footer>#noflex {
+                    text-align: right;
+            }
+            @keyframes wow {
+                0% {
+                    transform: rotate(-1deg) scale(1);
+                }
+                50% {
+                    transform: rotate(1deg) scale(1.2);
+                    background-color: rgba(255, 0, 0, 0.384);
+                }
+                100% {
+                    transform: rotate(0deg) scale(1);
+                }
+            }
+            @media screen and (min-height: 1024px) {
+                :root {
+                    font-size: 300%;
+                }
+                #header {
+                    font-size: 2rem;
+                }
+                #container {
+                    box-sizing: border-box;
+                    max-width: 90%;
+                }
+                textarea {
+                    width: 100%;
+                    box-sizing: border-box;
+                    border: 0.1rem solid black;
+                    font-size: 1rem;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id='container'>
+            <div id='header'><span>NATOifier</span><span id='version'>v0.1</span></div>
+            <hr size='0.1rem' color='black' width='100%'>
+            <div id='main'>
+                <label for='translator'>Enter your text here:</label>
+                <textarea id="translator" name="translator" rows="4" cols="33" placeholder='Enter your text here'>It was a dark and stormy night...</textarea>
+                <input type="button" class='input__button' value="Translate!" onclick="tr()">
+            </div>
+            <div id='aux'>
+                <label for='buffer'>Copy your text here:</label>
+                <textarea id="buffer" name="buffer" rows="4" cols="33" placeholder='Copy your text here'>India Tango  Whiskey Alpha Sierra  Alpha  Delta Alpha Romeo Kilo  Alpha November Delta  Sierra Tango Oscar Romeo Mike Yankee  November India Golf Hotel Tango ...</textarea>
+                <input type="button" class='input__button' id='input__button-copy' value="Copy" onclick="copy()">
+            </div>
+            <div id='footer'>
+                <span>Made by <a href='https://s3fs.github.io'>s3fs.github.io</a></span>
+                <span id='noflex'>CC-BY-SA 3.0 or MIT lolol</span>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        let toBeTranslated = document.querySelector('#translator');
+        let toBeCopied = document.querySelector('#buffer');
+        const mapObj = {
+            A:'Alpha', B:'Bravo', C:'Charlie', D:'Delta', E:'Echo', F:'Foxtrot', G:'Golf', H:'Hotel', I:'India', J:'Juliet', K:'Kilo', L:'Lima', M:'Mike', N:'November', O:'Oscar', P:'Papa', Q:'Quebec', R:'Romeo', S:'Sierra', T:'Tango', U:'Uniform', V:'Victor', W:'Whiskey', X:'X-ray', Y:'Yankee', Z:'Zule'
+        }
+    
+        var tr = () => {
+            //To grab contents use .value not .innerHTML
+            let content = toBeTranslated.value.toUpperCase();
+            content = content.replace(/[A-Z]/gi, (matched) => `${mapObj[matched]} `)
+            toBeCopied.innerHTML = content;
+            document.getElementById('input__button-copy').value = 'Copy'
+        }
+
+        var copy = () => {
+            toBeCopied.select();
+            document.execCommand('copy');
+            //same here
+            document.getElementById('input__button-copy').value = 'Copied!'
+        }
+</script>
+</html>
