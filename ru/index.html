@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang='en-US'>
+<html lang='ru-RU'>
     <head>
-        <title>NATO Encoder</title>
+        <title>Нато енкодер</title>
         <meta charset="utf-8">
         <meta name='author' content='The Hacker'>
         <meta name='description' content='Encode your text using this NATO translator.'>
@@ -116,21 +116,21 @@
 
     <body>
         <div id='container'>
-            <div id='header'><span id='header__main'>NATOifier<span id='version'>v0.1</span></span><a href='../ru/index.html' id='lang__button'>RU</a></div>
+            <div id='header'><span id='header__main'>НАТОифиер<span id='version'>v0.1</span></span><a href='../index.html' id='lang__button'>EN</a></div>
             <hr size='0.1rem' color='black' width='100%' noshade>
             <div id='main'>
-                <label for='translator' id='translator__label'>Enter your text here:</label>
+                <label for='translator' id='translator__label'>Введи текст здесь:</label>
                 <textarea id="translator" name="translator" rows="4" cols="33" placeholder='Enter your text here'>It was a dark and stormy night...</textarea>
-                <input type="button" class='input__button' id='input__button-tr' value="Translate!" onclick="tr()">
+                <input type="button" class='input__button' id='input__button-tr' value="Перевести!" onclick="tr()">
             </div>
             <div id='aux'>
-                <label for='buffer' id='buffer__label'>Copy your text here:</label>
+                <label for='buffer' id='buffer__label'>Скопируй текст здесь:</label>
                 <textarea id="buffer" name="buffer" rows="4" cols="33" placeholder='Copy your text here'>India Tango  Whiskey Alpha Sierra  Alpha  Delta Alpha Romeo Kilo  Alpha November Delta  Sierra Tango Oscar Romeo Mike Yankee  November India Golf Hotel Tango ...</textarea>
-                <input type="button" class='input__button' id='input__button-copy' value="Copy" onclick="copy()">
+                <input type="button" class='input__button' id='input__button-copy' value="Скопировать" onclick="copy()">
             </div>
             <div id='footer'>
-                <span>Made by <a href='https://s3fs.github.io'>s3fs.github.io</a></span>
-                <span id='noflex'>CC-BY-SA 3.0 or MIT lolol</span>
+                <span>Сделано <a href='https://s3fs.github.io'>s3fs.github.io</a></span>
+                <span id='noflex'>CC-BY-SA 3.0 или MIT лолол</span>
             </div>
         </div>
     </body>
@@ -155,11 +155,10 @@
             toBeCopied.select();
             document.execCommand('copy');
             //same here
-            document.getElementById('input__button-copy').value = 'Copied!';
-            setInterval(() => {document.getElementById('input__button-copy').value = 'Copy';}, 3000);
+            document.getElementById('input__button-copy').value = 'Скопировано!';
+            setInterval(() => {document.getElementById('input__button-copy').value = 'Скопировать';}, 3000);
         }
 
-        //for later:
         //langButton.onclick = () => langButton.value == 'EN' ? langButton.value = 'RU' : langButton.value = 'EN';
 
 </script>
