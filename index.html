@@ -5,7 +5,8 @@
         <meta charset="utf-8">
         <meta name='author' content='The Hacker'>
         <meta name='description' content='Encode your text using this NATO translator.'>
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <style>
             :root {
                 font-family: monospace;
@@ -93,30 +94,71 @@
                     transform: rotate(0deg) scale(1);
                 }
             }
-            @media screen and (min-height: 1024px) {
-                :root {
-                    font-size: 300%;
-                }
-                #header {
-                    font-size: 2rem;
-                }
-                #container {
-                    box-sizing: border-box;
-                    max-width: 90%;
-                }
-                textarea {
-                    width: 100%;
-                    box-sizing: border-box;
-                    border: 0.1rem solid black;
-                    font-size: 1rem;
+
+            @media only screen and (max-width: 600px) {
+                #popup>p,h {
+                    font-size: 1.5rem;
                 }
             }
+
+            #popup {
+                visibility: hidden;
+                overflow:auto;
+                font-size: 2rem;
+                left: 50%;
+                margin-left: -35vw;
+                width: 70vw;
+                height: auto;
+                padding: 1rem;
+                position: absolute;
+                background-color: rgba(255, 255, 255, 1);
+                z-index: 2;
+                outline: 1rem solid red;
+                text-align: justify;
+            }
+            #popup>h {
+                font-weight: bold;
+            }
+            .popup__description {
+                margin-top: 0.5rem;
+            }
+            #popup__close {
+                font-size: 3rem;
+                float: right;
+                margin-top: -0.5rem;
+                cursor: pointer;
+            }
+            #help {
+                cursor: pointer;
+                margin-left: 1rem;
+                color: gray;
+                filter: blur(0%) !important;
+            }
+            #help:hover {
+                color:black;
+            }
+            .blur {
+                -webkit-filter: blur(5px);
+                -moz-filter: blur(5px);
+                -o-filter: blur(5px);
+                filter: blur(5px);
+            }
         </style>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
     </head>
 
     <body>
+        <div id='popup'>
+            <h>What is this tool?</h><i id='popup__close' class='material-icons'>close</i>
+            <p class='popup__description'>This is a simple and effective plain text to NATO phonetic alphabet converter. Currently supported languages: en-US and ru-RU.</p>
+            <h>How do I use it?</h>
+            <p class='popup__description'>Insert text into the top field. Click the big red button under it. Then click the big red button below the second field. The text is now copied to your clipboard!</p>
+            <h>Do I need to pay?</h>
+            <p class='popup__description'>No.</p>
+        </div>
         <div id='container'>
-            <div id='header'><span id='header__main'>NATOifier<span id='version'>v0.1</span></span><a href='../nato/ru.html' id='lang__button'>RU</a></div>
+            <div id='header'><span id='header__main'>NATOifier<span id='version' title='Now supporting Russian!'>v0.2</span><i id='help' class='material-icons'>help_outline</i></span><a href='../nato/ru.html' id='lang__button'>RU</a></div>
             <hr size='0.1rem' color='black' width='100%' noshade>
             <div id='main'>
                 <label for='translator' id='translator__label'>Enter your text here:</label>
@@ -139,6 +181,9 @@
         let toBeTranslated = document.querySelector('#translator');
         let toBeCopied = document.querySelector('#buffer');
         let langButton = document.querySelector('#lang__button');
+        let helpButton = document.querySelector('#help');
+        let closeButton = document.querySelector('#popup__close');
+        let popUp = document.querySelector('#popup');
 
         const mapObj = {
             A:'Alpha', B:'Bravo', C:'Charlie', D:'Delta', E:'Echo', F:'Foxtrot', G:'Golf', H:'Hotel', I:'India', J:'Juliet', K:'Kilo', L:'Lima', M:'Mike', N:'November', O:'Oscar', P:'Papa', Q:'Quebec', R:'Romeo', S:'Sierra', T:'Tango', U:'Uniform', V:'Victor', W:'Whiskey', X:'X-ray', Y:'Yankee', Z:'Zule'
@@ -157,6 +202,17 @@
             //same here
             document.getElementById('input__button-copy').value = 'Copied!';
             setInterval(() => {document.getElementById('input__button-copy').value = 'Copy';}, 3000);
+        }
+
+        helpButton.onclick = () => {
+            //Just trying out different things. You can actually break the layout here but I'm gonna leave it.
+            document.querySelector('#container').classList.toggle('blur');
+            popUp.style.visibility = 'visible';
+        }
+
+        closeButton.onclick = () => {
+            document.querySelector('#container').classList.toggle('blur');
+            popUp.style.visibility = 'hidden';
         }
 
         //for later:
