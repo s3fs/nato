@@ -8,6 +8,8 @@ let closeButton = document.querySelector('#popup__close');
 let popUp = document.querySelector('#popup');
 var mapObj; // we'll assign later
 
+//why is that call here, what is it for? 
+//Also seems like it gets rid of a popup and a version span. Is that bc their content is not declared in strings.json?
 loadPage();
 
 var tr = () => {
@@ -39,11 +41,16 @@ closeButton.onclick = () => {
 }
 
 langButton.addEventListener('click', function(e) {
+	//what does preventDefault() do here? I've tried removing it and it had no effect
 	e.preventDefault();
 	var language = this.innerText === 'RU' ? 'Russian' : 'English';
 	loadPage(language);
 });
 
+
+//What is this sorcery? lol. I just can't grasp it for now. 
+//I see that it changes DOM with json contents, but everything in between... is mystery 
+//Could you please recommend a source that covers what you did here? 
 function loadPage(language="English"){
 	fetch("strings/languages.json")
 		.then(json=>json.json())
