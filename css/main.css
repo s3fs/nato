@@ -1,0 +1,135 @@
+:root {
+	font-family: monospace;
+	font-size: 100%;
+}
+html, body {
+	margin: 0 0.5rem 0 0.5rem;
+	height: 100%;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+div {
+	margin-top: 50px;
+}
+#container {
+	margin: 0 auto;
+	max-width: 640px;
+	height: 100%;
+}
+#header {
+	margin-top: 20px !important;
+	font-size: 3rem;
+	font-weight: bold;
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+#version {
+	font-size: 1.5rem;
+	color: gray;
+}
+#lang__button {
+	font-size: 1.5rem;
+	color: black;
+	font-weight: bold;
+}
+#main {
+	margin-top: 30px;
+}
+label {
+	display:block;
+	margin-bottom: 0.2rem;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+textarea {
+	width: 100%;
+	box-sizing: border-box;
+	border: 0.1rem solid black;
+	font-size: 1.5rem;
+}
+.input__button {
+	position: relative;
+	font-size: 1.5rem;
+	font-weight: bold;
+	width: 100%;
+	background-color: white;
+	border: 0.5rem solid red;
+	margin-top: 0.5rem;
+}
+.input__button:hover {
+	animation: wow 1s;
+}
+#footer {
+	display: flex;
+	justify-content: space-between;
+	color: gray;
+}
+#footer>span>a {
+	color: rgb(92, 92, 92);
+}
+#footer>#noflex {
+	text-align: right;
+}
+@keyframes wow {
+	0% {
+		transform: rotate(-1deg) scale(1);
+	}
+	50% {
+		transform: rotate(1deg) scale(1.2);
+		background-color: rgba(255, 0, 0, 0.384);
+	}
+	100% {
+		transform: rotate(0deg) scale(1);
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	#popup>p,h {
+		font-size: 1.5rem;
+	}
+}
+
+#popup {
+	visibility: hidden;
+	overflow:auto;
+	font-size: 2rem;
+	left: 50%;
+	margin-left: -35vw;
+	width: 70vw;
+	height: auto;
+	padding: 1rem;
+	position: absolute;
+	background-color: rgba(255, 255, 255, 1);
+	z-index: 2;
+	outline: 1rem solid red;
+	text-align: justify;
+}
+#popup>h {
+	font-weight: bold;
+}
+.popup__description {
+	margin-top: 0.5rem;
+}
+#popup__close {
+	font-size: 3rem;
+	float: right;
+	margin-top: -0.5rem;
+	cursor: pointer;
+}
+#help {
+	cursor: pointer;
+	margin-left: 1rem;
+	color: gray;
+	filter: blur(0%) !important;
+}
+#help:hover {
+	color:black;
+}
+.blur {
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	filter: blur(5px);
+}
